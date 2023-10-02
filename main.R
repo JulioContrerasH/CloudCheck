@@ -55,7 +55,7 @@ mes_dia <- paste0(mes, dia)
 ids <- paste0(substr(id3, 1, nchar(id3) - 8), mes_dia)
 
 # Update the 'scene_id' column in the dataframe with the newly formatted ids
-df$scene_id <- ids
+df$scene_id2 <- ids
 
 # -----------------------------
 # Step 6: Initialize Earth Engine and Check Image Existence
@@ -63,10 +63,16 @@ df$scene_id <- ids
 
 # Load external utility functions
 source("D:/CURSOS_2022/Repos/CloudCheck/utils.R")
+collectionPrefixes <- c(
+  'LANDSAT/LC08/C02/T1_TOA/',
+  'LANDSAT/LC08/C02/T2_TOA/',
+  'LANDSAT/LC08/C02/T1_RT_TOA/'
+)
 
+df <- read.csv()
 # Check existence of each image ID and update the dataframe
 for (i in 1:nrow(df)) {
-  df[i, "gee_id"] <- checkImageExistence(df$scene_id[i])
+  df[i, "gee_id"] <- checkImageExistence(df$scene_id2[i], collectionPrefixes)
 }
 
 # -----------------------------

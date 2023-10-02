@@ -1,14 +1,7 @@
 library(rgee)
 
 # Función para verificar la existencia de una imagen
-checkImageExistence <- function(imageId) {
-  # Lista de posibles prefijos de colecciones
-  collectionPrefixes <- c(
-    'LANDSAT/LC08/C02/T1_TOA/',
-    'LANDSAT/LC08/C02/T2_TOA/',
-    'LANDSAT/LC08/C02/T1_RT_TOA/'
-  )
-  
+checkImageExistence <- function(imageId, collectionPrefixes) {
   # Iterar sobre cada prefijo y verificar la existencia
   for (prefix in collectionPrefixes) {
     collectionPath <- paste0(prefix, imageId)
